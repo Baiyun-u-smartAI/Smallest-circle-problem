@@ -175,7 +175,7 @@ void FindCircleFromThreePoint(int noktalar[1000][2],int noktaSayisi)
         }
     }
     DrawCircle(lastCenterX,lastCenterY,smallestRadius);
-    printf("\ncemberin merkezi --> %lf , %lf\ncemberin yaricapi --> %lf",lastCenterX,lastCenterY,smallestRadius);
+    printf("\ncenter point --> %lf , %lf\nradius --> %lf",lastCenterX,lastCenterY,smallestRadius);
 
 }
 void FindCircleFromTwoPoint(int noktalar[1000][2],int noktaSayisi)
@@ -231,7 +231,7 @@ void FindCircleFromTwoPoint(int noktalar[1000][2],int noktaSayisi)
     if(degerlerAtandi && smallestRaidus < 999998)
     {
         DrawCircle(lastX,lastY,smallestRaidus);
-        printf("\ncemberin merkezi --> %lf , %lf\ncemberin yaricapi --> %lf",lastX,lastY,smallestRaidus);
+        printf("\ncenter point --> %lf , %lf\nradius --> %lf",lastX,lastY,smallestRaidus);
     }
     else
     {
@@ -273,7 +273,7 @@ int main()
     char dosyadanOkunan[1000];
     int noktalar[1000][2];
     int i =0,j=0;
-    if ((dosya = fopen("noktalar.txt", "r")) == NULL)   // dosya değişkenini açar, açamazsa mesaj yazdırır
+    if ((dosya = fopen("points_group.txt", "r")) == NULL)   // dosya değişkenini açar, açamazsa mesaj yazdırır
     {
         printf("dosya acilamadi!\n");
         exit(1);
@@ -302,7 +302,8 @@ int main()
     }
     // https://www.geeksforgeeks.org/draw-circle-c-graphics/
 
-    initwindow(751, 751); // sağ ve alt gözüksün diye 750 yerine 751
+    initgraph(751, 751); // sağ ve alt gözüksün diye 750 yerine 751
+    setcaption("find smallest circle");
     DrawXYAxis();
     DrawPoints(noktalar,j);
 
@@ -313,7 +314,7 @@ int main()
     else if( j == 1)
     {
         DrawCircle(noktalar[0][0],noktalar[0][1],0);
-        printf("\ncemberin merkezi --> %lf,%lf\ncemberin yaricapi --> 0",noktalar[0][0],noktalar[0][1]);
+        printf("\ncenter point --> %lf,%lf\nradius --> 0",noktalar[0][0],noktalar[0][1]);
 
     }
     else if(j == 2)
@@ -323,7 +324,7 @@ int main()
                    ,FindTheDistanceBetweenTwoPoints(noktalar[0][0]
                            ,noktalar[0][1],noktalar[1][0],noktalar[1][1]) / 2);
 
-        printf("\ncemberin merkezi --> %lf,%lf\ncemberin yaricapi --> %lf"
+        printf("\ncenter point --> %lf,%lf\nradius --> %lf"
                ,MidPointOfTwoPoint(noktalar[0][0],noktalar[1][0])
                ,MidPointOfTwoPoint(noktalar[0][1],noktalar[1][1])
                ,FindTheDistanceBetweenTwoPoints(noktalar[0][0]
